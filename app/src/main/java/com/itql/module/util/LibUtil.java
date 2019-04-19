@@ -1,6 +1,10 @@
 package com.itql.module.util;
 
 import android.content.pm.ApplicationInfo;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class LibUtil {
     public static void runOnUIThread(Runnable runnable) {
@@ -52,5 +56,41 @@ public class LibUtil {
     public static int px2sp(float value) {
         final float fontScale = LibUtilApplication.getApplication().getResources().getDisplayMetrics().scaledDensity;
         return (int) (value / fontScale + 0.5f);
+    }
+
+    public static int getColor(int res) {
+        return LibUtilApplication.getContext().getResources().getColor(res);
+    }
+
+    public static String getString(int res) {
+        return LibUtilApplication.getContext().getResources().getString(res);
+    }
+
+    public static View inflate(int res) {
+        return inflate(res, null, false);
+    }
+
+    public static View inflate(int res, ViewGroup group) {
+        return inflate(res, group, false);
+    }
+
+    public static View inflate(int res, ViewGroup group, boolean attachToRoot) {
+        return LayoutInflater.from(group == null ? LibUtilApplication.getContext() : group.getContext()).inflate(res, group, attachToRoot);
+    }
+
+    public static void showToast(int res) {
+        showToast(getString(res));
+    }
+
+    public static void showToast(int res, int duration) {
+        showToast(getString(res), duration);
+    }
+
+    public static void showToast(String s) {
+        Toast.makeText(LibUtilApplication.getContext(), s, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void showToast(String s, int duration) {
+        Toast.makeText(LibUtilApplication.getContext(), s, duration).show();
     }
 }
