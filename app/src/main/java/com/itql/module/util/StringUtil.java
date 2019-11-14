@@ -24,7 +24,7 @@ public class StringUtil {
     }
 
     public static int byte2Int(byte[] bytes, int start, int length) {
-        if (bytes.length < start || bytes.length < length || start > length) return -1;
+        if (bytes.length < length || start > length) return -1;
         int value = 0;
         int temp;
         for (int i = 0; i < length; i++) {
@@ -37,7 +37,7 @@ public class StringUtil {
 
     public static int byte2Int(List<Byte> bytes, int start, int length) {
         int arrLength = bytes.size();
-        if (arrLength < start || arrLength < length || start > length) return -1;
+        if (arrLength < length || start > length) return -1;
         int value = 0;
         int temp;
         for (int i = 0; i < length; i++) {
